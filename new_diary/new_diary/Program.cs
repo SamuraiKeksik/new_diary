@@ -2,7 +2,9 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using new_diary.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -18,6 +20,9 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     {
         options.LoginPath = "/Auth/Login";
     });
+string connection = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connection));
+
 var app = builder.Build();
 
 app.UseStaticFiles();
@@ -25,15 +30,12 @@ app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();
 
-
 app.MapControllerRoute(
     name: "default", 
-    pattern: "{action}",
-    defaults: new {Controller = "Home", action = "Index"});
+    pattern: "{controller=Home}/{action=Index}"
+    );
 
-app.MapControllerRoute(
-    name: "auth",
-    pattern: "{controller}/{action}");
+
 
 app.Run();
 
