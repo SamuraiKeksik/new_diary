@@ -9,8 +9,100 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\css\\styles.css",
+      "PackagePath": "staticwebassets\\css\\styles.css"
+    },
+    {
+      "Id": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\css\\styles2.css",
+      "PackagePath": "staticwebassets\\css\\styles2.css"
+    },
+    {
+      "Id": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\demo\\chart-area-demo.js",
+      "PackagePath": "staticwebassets\\demo\\chart-area-demo.js"
+    },
+    {
+      "Id": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\demo\\chart-bar-demo.js",
+      "PackagePath": "staticwebassets\\demo\\chart-bar-demo.js"
+    },
+    {
+      "Id": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\demo\\chart-pie-demo.js",
+      "PackagePath": "staticwebassets\\demo\\chart-pie-demo.js"
+    },
+    {
+      "Id": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\demo\\datatables-demo.js",
+      "PackagePath": "staticwebassets\\demo\\datatables-demo.js"
+    },
+    {
       "Id": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\img\\Logo.png",
+      "PackagePath": "staticwebassets\\img\\Logo.png"
+    },
+    {
+      "Id": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\img\\avatar.jpeg",
+      "PackagePath": "staticwebassets\\img\\avatar.jpeg"
+    },
+    {
+      "Id": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\img\\avatar.jpg",
+      "PackagePath": "staticwebassets\\img\\avatar.jpg"
+    },
+    {
+      "Id": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\img\\error-404-monochrome.svg",
+      "PackagePath": "staticwebassets\\img\\error-404-monochrome.svg"
+    },
+    {
+      "Id": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\img\\icons\\add_note.png",
+      "PackagePath": "staticwebassets\\img\\icons\\add_note.png"
+    },
+    {
+      "Id": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\img\\icons\\add_notebook.png",
+      "PackagePath": "staticwebassets\\img\\icons\\add_notebook.png"
+    },
+    {
+      "Id": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\img\\icons\\book.png",
+      "PackagePath": "staticwebassets\\img\\icons\\book.png"
+    },
+    {
+      "Id": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\img\\icons\\books.png",
+      "PackagePath": "staticwebassets\\img\\icons\\books.png"
+    },
+    {
+      "Id": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\img\\icons\\home.png",
+      "PackagePath": "staticwebassets\\img\\icons\\home.png"
+    },
+    {
+      "Id": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\img\\icons\\note.png",
+      "PackagePath": "staticwebassets\\img\\icons\\note.png"
+    },
+    {
+      "Id": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\img\\icons\\notebook .png",
+      "PackagePath": "staticwebassets\\img\\icons\\notebook .png"
+    },
+    {
+      "Id": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\img\\icons\\notebook.png",
+      "PackagePath": "staticwebassets\\img\\icons\\notebook.png"
+    },
+    {
+      "Id": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\img\\icons\\notes.png",
+      "PackagePath": "staticwebassets\\img\\icons\\notes.png"
+    },
+    {
+      "Id": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\img\\icons\\sticky-notes.png",
+      "PackagePath": "staticwebassets\\img\\icons\\sticky-notes.png"
+    },
+    {
+      "Id": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\js\\datatables-simple-demo.js",
+      "PackagePath": "staticwebassets\\js\\datatables-simple-demo.js"
+    },
+    {
+      "Id": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\js\\scripts.js",
+      "PackagePath": "staticwebassets\\js\\scripts.js"
     },
     {
       "Id": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\js\\site.js",

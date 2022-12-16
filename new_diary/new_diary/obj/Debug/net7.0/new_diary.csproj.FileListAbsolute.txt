@@ -21,7 +21,6 @@ D:\Web development\Git projects\new_diary\new_diary\new_diary\obj\Debug\net7.0\s
 D:\Web development\Git projects\new_diary\new_diary\new_diary\obj\Debug\net7.0\staticwebassets.pack.json
 D:\Web development\Git projects\new_diary\new_diary\new_diary\obj\Debug\net7.0\staticwebassets.build.json
 D:\Web development\Git projects\new_diary\new_diary\new_diary\obj\Debug\net7.0\staticwebassets.development.json
-D:\Web development\Git projects\new_diary\new_diary\new_diary\obj\Debug\net7.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
 D:\Web development\Git projects\new_diary\new_diary\new_diary\obj\Debug\net7.0\scopedcss\bundle\new_diary.styles.css
 D:\Web development\Git projects\new_diary\new_diary\new_diary\obj\Debug\net7.0\scopedcss\projectbundle\new_diary.bundle.scp.css
 D:\Web development\Git projects\new_diary\new_diary\new_diary\obj\Debug\net7.0\new_diary.dll
@@ -29,3 +28,12 @@ D:\Web development\Git projects\new_diary\new_diary\new_diary\obj\Debug\net7.0\r
 D:\Web development\Git projects\new_diary\new_diary\new_diary\obj\Debug\net7.0\new_diary.pdb
 D:\Web development\Git projects\new_diary\new_diary\new_diary\obj\Debug\net7.0\new_diary.genruntimeconfig.cache
 D:\Web development\Git projects\new_diary\new_diary\new_diary\obj\Debug\net7.0\ref\new_diary.dll
+D:\Web development\Git projects\new_diary\new_diary\new_diary\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Web development\Git projects\new_diary\new_diary\new_diary\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Web development\Git projects\new_diary\new_diary\new_diary\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+D:\Web development\Git projects\new_diary\new_diary\new_diary\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+D:\Web development\Git projects\new_diary\new_diary\new_diary\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Web development\Git projects\new_diary\new_diary\new_diary\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+D:\Web development\Git projects\new_diary\new_diary\new_diary\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Web development\Git projects\new_diary\new_diary\new_diary\obj\Debug\net7.0\new_diary.csproj.CopyComplete
+D:\Web development\Git projects\new_diary\new_diary\new_diary\obj\Debug\net7.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
