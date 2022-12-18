@@ -1,20 +1,26 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using new_diary.Models;
+using System.Security.Claims;
 
 namespace new_diary.Controllers
 {
     public class HomeController : Controller
     {
         ApplicationContext _dbContext;
-        public HomeController(ApplicationContext dbContext)
+        UserManager<MyUser> _userManager;
+        public HomeController(ApplicationContext dbContext, UserManager<MyUser> userManager)
         {
             _dbContext = dbContext;
+            _userManager = userManager;
         }
 
+        
         public IActionResult Index()
         {
-            return View();
+            var notebooks = _dbContext.Notebooks.ToList();
+            return View(notebooks);
         }
 
         [Authorize]
@@ -32,8 +38,14 @@ namespace new_diary.Controllers
         {
             return View();
         }
-        
 
+
+        [Authorize]
+        public void NoteCreation()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var newNote = new Note {UserId = new Guid(userId)};
+        }
 
     }
 }

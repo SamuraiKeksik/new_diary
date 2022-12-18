@@ -1,9 +1,12 @@
-﻿namespace new_diary.Models
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
+
+namespace new_diary.Models
 {
-    public class MyUser
+    public class MyUser : IdentityUser       
     {
-        public int NotebookCount { get; set; } //кол-во блокнотов
-        public int NoteCount { get; set; } // Кол-во записок
+        public int NotebookCount { get; set; } = 0; //кол-во блокнотов
+        public int NoteCount { get; set; } = 0;// Кол-во записок
         public byte[] UserPicture { get; set; } //Картинка пользователя
     }
 }

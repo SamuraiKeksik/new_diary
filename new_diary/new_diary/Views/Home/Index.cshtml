@@ -1,1 +1,6 @@
-﻿h;khkerjhekj 
+﻿@model IEnumerable<Notebook>
+
+@foreach(var item in Model)
+{
+    @item.NotebookId
+}
