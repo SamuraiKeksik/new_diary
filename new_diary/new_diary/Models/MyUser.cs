@@ -7,6 +7,6 @@ namespace new_diary.Models
     {
         public int NotebookCount { get; set; } = 0; //кол-во блокнотов
         public int NoteCount { get; set; } = 0;// Кол-во записок
-        public byte[] UserPicture { get; set; } //Картинка пользователя
+        public byte[] UserPicture { get; set; } = new byte[0];//Картинка пользователя
     }
 }
