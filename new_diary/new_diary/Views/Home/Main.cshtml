@@ -3,3 +3,9 @@
 @{
 }
 MAINMAINMAIN2
+@if(User?.Identity?.IsAuthenticated ?? false)
+{
+    <a class="btn btn-danger" asp-action="Logout" asp-controller="Account">
+        Logout
+    </a>
+}
