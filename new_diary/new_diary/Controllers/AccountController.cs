@@ -33,7 +33,7 @@ namespace new_diary.Controllers
                     await _signInManager.SignOutAsync();
                     var result = await _signInManager.PasswordSignInAsync(user, login.Password, login.RememberMe, false);
                     if (result.Succeeded)
-                        return Redirect(login.ReturnUrl ?? "/");
+                        return RedirectToAction("Main", "Home");
                 }
                 ModelState.AddModelError(nameof(login.Email), "Invalid Email or password");
 

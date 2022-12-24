@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@model MainModel
+@using System.Security.Claims;
+@using Microsoft.AspNetCore.Identity;
+@{
+    var notes = Model.notes;
+    var notebooks = Model.notebooks;
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -15,7 +22,7 @@
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Ссылка на главную страницу-->
-        <a class="navbar-new-diary ps-3 mt-2" href="index.html"><img src="~/img/Logo.png" /></a>
+        <a class="navbar-new-diary ps-3 mt-2" asp-action="Main" asp-controller="Home"><img src="~/img/Logo.png" /></a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
@@ -33,7 +40,7 @@
                     <li><a class="dropdown-item" href="#!">Settings</a></li>
                     <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                     <li><hr class="dropdown-divider" /></li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    <li><a class="dropdown-item" asp-action="Logout" asp-controller="Account">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -46,18 +53,19 @@
 
 
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" asp-action="Main" asp-controller="Home">  @*Main page*@
                             <img src="~/img/icons/home.png" class="new-diary-icons" />
                             Main
                         </a>
-                        <a class="nav-link" href="index.html">
-                            <img src="~/img/icons/sticky-notes.png" class="new-diary-icons" />
+                        <a class="nav-link" asp-action="Notes" asp-controller="Home">  @*Notes page*@
+                            <img src="~/img/icons/sticky-notes.png" class="new-diary-icons" /> 
                             All notes
                         </a>
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" asp-action="Notebooks" asp-controller="Home">  @*Notebooks page*@
                             <img src="~/img/icons/book.png" class="new-diary-icons" />
                             All notebooks
                         </a>
+
 
                         <div class="sb-sidenav-menu-heading">Interface</div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -65,13 +73,21 @@
                             Notes
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
+                        
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="#">
-                                    <img src="~/img/icons/note.png" class="new-diary-icons" />NoteName1
+                                @foreach (var note in Model.notes)
+                                {
+                                <a class="nav-link" asp-action="Notes" asp-controller="Home" asp-route-noteId="@note.Id">
+                                    <img src="~/img/icons/note.png" class="new-diary-icons" />
+                                    @note.Title
                                 </a>
-                                <a class="nav-link" href="#">
-                                    <img src="~/img/icons/note.png" class="new-diary-icons" />NoteName2
+                                }                                
+                                <a class="nav-link" asp-action="NoteCreation" asp-controller="Home">                                    
+                                    <p class="text-success">
+                                        <img src="~/img/icons/add_note.png" class="new-diary-icons" />
+                                        Create new note
+                                    </p>
                                 </a>
                             </nav>
                         </div>
@@ -84,37 +100,37 @@
                         </a>
                         <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                    <img src="~/img/icons/notebook.png" class="new-diary-icons" />
-                                    NotebookName1
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="#"><img src="~/img/icons/note.png" class="new-diary-icons" />Note1</a>
-                                        <a class="nav-link" href="#"><img src="~/img/icons/note.png" class="new-diary-icons" />Note2</a>
-                                        <a class="nav-link" href="#"><img src="~/img/icons/note.png" class="new-diary-icons" />Note3</a>
-                                    </nav>
-                                </div>
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                                    <img src="~/img/icons/notebook.png" class="new-diary-icons" />
-                                    NoteBookName2
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="#"><img src="~/img/icons/note.png" class="new-diary-icons" />Note1</a>
-                                        <a class="nav-link" href="#"><img src="~/img/icons/note.png" class="new-diary-icons" />Note2</a>
-                                        <a class="nav-link" href="#"><img src="~/img/icons/note.png" class="new-diary-icons" />Note3</a>
-                                    </nav>
-                                </div>
+
+                                @foreach(var notebook in Model.notebooks)
+                                {
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        <img src="~/img/icons/notebook.png" class="new-diary-icons" />
+                                        NotebookName1
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="#"><img src="~/img/icons/note.png" class="new-diary-icons" />Note1</a>
+                                            <a class="nav-link" href="#"><img src="~/img/icons/note.png" class="new-diary-icons" />Note2</a>
+                                            <a class="nav-link" href="#"><img src="~/img/icons/note.png" class="new-diary-icons" />Note3</a>
+                                        </nav>
+                                    </div>
+                                }                                
+                                <a class="nav-link" asp-action="NotebookCreation" asp-controller="Home">
+                                    <p class="text-success">
+                                        <img src="~/img/icons/add_notebook.png" class="new-diary-icons" />
+                                        Add notebook
+                                    </p>
+                                </a>                                
                             </nav>
                         </div>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    <img src="~/img/avatar.jpeg" class="new-diary-avatar me-1" alt="img"> SamuraiKeksik
+                    <img class="new-diary-avatar me-1" alt="UserImg" src="@Url.Action("GetUserPicture", "Home",
+                        new { id = @User.Claims.First(x => x.Type == ClaimTypes.NameIdentifier).ToString() })"/>               
+                        @User.Identity.Name
                 </div>
             </nav>
         </div>

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "vrwnSufl20oN/qOFunBDrzXu81GPWy4egoQUg8L11Zc=",
+  "Hash": "4Nz34vxL6kEiPGjteTpDeHzL+dikYYqG9dxRU37QELM=",
   "Source": "new_diary",
   "BasePath": "_content/new_diary",
   "Mode": "Default",
@@ -338,23 +338,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\icons\\note.png"
-    },
-    {
-      "Identity": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\img\\icons\\notebook .png",
-      "SourceId": "new_diary",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\",
-      "BasePath": "_content/new_diary",
-      "RelativePath": "img/icons/notebook .png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\icons\\notebook .png"
     },
     {
       "Identity": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\img\\icons\\notebook.png",
