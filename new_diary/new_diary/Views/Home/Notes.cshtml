@@ -1,5 +1,10 @@
-﻿@page
-@model new_diary.Pages.Home.NoteModel
+﻿
 @{
 }
 NOTENOTENOTE3
+
+UPLOAD FILE
+<form method="post" enctype="multipart/form-data" asp-action="UpdateUserPicture" asp-controller="Home">
+    <input type="file" name="userPicture" />
+    <input type="submit" class="btn btn-primary" />
+</form>

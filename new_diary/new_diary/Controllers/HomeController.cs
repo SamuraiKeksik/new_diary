@@ -18,13 +18,44 @@ namespace new_diary.Controllers
             _userManager = userManager;
         }
 
-        // To convert the Byte Array to the author Image - возврат картинки юзера
-        public FileContentResult GetUserPicture(string id)
+        private MainModel GetMainModel()   //создание новой MainModel
         {
-            byte[] byteArray = _userManager.FindByIdAsync(id).Result.UserPicture;
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var newModel = new MainModel();
+            newModel.notebooks = _dbContext.Notebooks.Where(x => x.UserId.ToString() == userId).ToArray();
+            newModel.notes = _dbContext.Notes.Where(x => x.UserId.ToString() == userId).ToArray();
+            return newModel;
+        }
+
+
+        // To convert the Byte Array to the author Image 
+        public FileContentResult GetUserPicture()   //Получение картинки с сервера
+        {
+          var byteArray = _userManager.FindByNameAsync(User.Identity.Name).Result.UserPicture;
             return byteArray != null
                 ? new FileContentResult(byteArray, "image/jpeg")
                 : null;
+        }
+        [HttpPost]
+        public async Task<IActionResult> UpdateUserPicture(IFormFile userPicture) //Загрузка картинки на сервер
+        {
+            if (userPicture.Length > 0)
+            {
+                using (var ms = new MemoryStream())
+                {
+                    userPicture.CopyTo(ms);
+                    var fileBytes = ms.ToArray();
+                    // string s = Convert.ToBase64String(fileBytes);
+                    // act on the Base64 data
+
+                    var myUser = await _userManager.FindByNameAsync(User.Identity.Name);
+                    myUser.UserPicture = fileBytes;
+                    await _userManager.UpdateAsync(myUser);
+                }
+               
+            }
+            return RedirectToAction("Main");            
+            
         }
 
         public IActionResult Index()
@@ -35,16 +66,14 @@ namespace new_diary.Controllers
         [Authorize]
         public IActionResult Main()
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var newModel = new MainModel();
-            newModel.notebooks = _dbContext.Notebooks.Where(x => x.UserId.ToString() == userId).ToArray();
-            newModel.notes = _dbContext.Notes.Where(x => x.UserId.ToString() == userId).ToArray();
+            var newModel = GetMainModel();
             return View(newModel);
         }
         [Authorize]
         public IActionResult Notes()
         {
-            return View();
+            var newModel = GetMainModel();
+            return View(newModel);
         }
         [Authorize]
         public IActionResult Notebooks()
