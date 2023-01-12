@@ -97,6 +97,10 @@
       "PackagePath": "staticwebassets\\js\\datatables-simple-demo.js"
     },
     {
+      "Id": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\js\\myScripts\\notes.js",
+      "PackagePath": "staticwebassets\\js\\myScripts\\notes.js"
+    },
+    {
       "Id": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\js\\scripts.js",
       "PackagePath": "staticwebassets\\js\\scripts.js"
     },

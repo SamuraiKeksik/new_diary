@@ -1,10 +1,54 @@
-﻿
-@{
+﻿@{    
+    IEnumerable<Note> notes = Model.notes;
+    string title;
+    string text;
 }
-NOTENOTENOTE3
 
-UPLOAD FILE
-<form method="post" enctype="multipart/form-data" asp-action="UpdateUserPicture" asp-controller="Home">
-    <input type="file" name="userPicture" />
-    <input type="submit" class="btn btn-primary" />
-</form>
+<div class="row">
+    <div class="list-group col-4">
+        @if (notes.Count() == 0)
+        {
+            <text>Empty</text>
+        }
+        else
+        {
+            foreach(var note in notes)
+            {
+                
+                title = note.Title == string.Empty ? "Title" : note.Title;
+                text = note.Text == string.Empty ? "Empty note" : note.Text;
+                
+                <a href="#" class="note-box list-group-item list-group-item-action " aria-current="true">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">@title</h5>
+                        <small>3 days ago</small>
+                    </div>
+                    <p class="mb-1">@text</p>
+                </a>
+            }
+           
+        }
+        @*<a href="#" class="note-box list-group-item list-group-item-action active" aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">List group item heading</h5>
+                <small>3 days ago</small>
+            </div>
+            <p class="mb-1">Some placeholder content in a paragraph.</p>
+            <small>And some small print.</small>
+        </a>*@
+        
+    </div>
+
+    <div class="col-8">
+    <textarea >      
+            Some Initial Content was in this textarea
+    </textarea>
+
+    <div class="row">
+        <button class="update-btn btn-primary">Update</button>
+        <button class="delete-btn btn-danger">Delete</button>
+    </div>
+    <script src="~/js/myScripts/notes.js"></script>
+        
+    </div>
+</div>

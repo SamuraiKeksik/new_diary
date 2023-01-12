@@ -4,5 +4,6 @@
     {
         public IEnumerable<Notebook> notebooks { get; set; }
         public IEnumerable<Note> notes { get; set; }
+        public Guid? highlightedNote { get; set; }
     }
 }

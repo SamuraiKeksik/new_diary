@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4Nz34vxL6kEiPGjteTpDeHzL+dikYYqG9dxRU37QELM=",
+  "Hash": "syugXU7tuVNl1RMR59AyA7oQeSAZIPqb8SyJK5+y/6c=",
   "Source": "new_diary",
   "BasePath": "_content/new_diary",
   "Mode": "Default",
@@ -440,6 +440,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\datatables-simple-demo.js"
+    },
+    {
+      "Identity": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\js\\myScripts\\notes.js",
+      "SourceId": "new_diary",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\",
+      "BasePath": "_content/new_diary",
+      "RelativePath": "js/myScripts/notes.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\myScripts\\notes.js"
     },
     {
       "Identity": "D:\\Web development\\Git projects\\new_diary\\new_diary\\new_diary\\wwwroot\\js\\scripts.js",

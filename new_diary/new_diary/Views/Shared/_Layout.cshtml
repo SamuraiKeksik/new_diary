@@ -18,6 +18,10 @@
     <link href="~/css/styles.css" rel="stylesheet" />
     <link href="~/css/site.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/b403799967.js" crossorigin="anonymous"></script>
+
+    @*Tiny textarea editor*@
+    <script src="https://cdn.tiny.cloud/1/c3gl9ppgkjc3q6qxwpfikm8177a229yn806h1kiftdkxv52d/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
 </head>
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -161,5 +165,28 @@
     <script src="~/demo/chart-bar-demo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="~/js/datatables-simple-demo.js"></script>
+
+    @*Tiny textarea script*@
+    <script>
+
+        tinymce.init({
+            selector: 'textarea',
+            height: 500,
+            menubar: false,
+            plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+            ],
+            toolbar: 'undo redo | formatselect | ' +
+                'bold italic backcolor | alignleft aligncenter ' +
+                'alignright alignjustify | bullist numlist outdent indent | ' +
+                'removeformat | help',
+            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+        });
+
+
+
+    </script>
 </body>
 </html>

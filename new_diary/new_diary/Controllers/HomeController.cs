@@ -18,12 +18,13 @@ namespace new_diary.Controllers
             _userManager = userManager;
         }
 
-        private MainModel GetMainModel()   //создание новой MainModel
+        private MainModel GetMainModel(string highlightedNoteId = null)   //создание новой MainModel
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var newModel = new MainModel();
             newModel.notebooks = _dbContext.Notebooks.Where(x => x.UserId.ToString() == userId).ToArray();
             newModel.notes = _dbContext.Notes.Where(x => x.UserId.ToString() == userId).ToArray();
+            newModel.highlightedNote = highlightedNoteId != null ? new Guid(highlightedNoteId) : null; // либо null либо Id
             return newModel;
         }
 
@@ -69,25 +70,43 @@ namespace new_diary.Controllers
             var newModel = GetMainModel();
             return View(newModel);
         }
+
+
+
         [Authorize]
-        public IActionResult Notes()
+        public IActionResult Notes(string? noteId)
         {
             var newModel = GetMainModel();
             return View(newModel);
         }
         [Authorize]
+        public async Task<IActionResult> NoteCreation()  //Создание заметки и перенаправление на список
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var newNote = new Note { UserId = new Guid(userId) };
+            await _dbContext.AddAsync(newNote);
+            await _dbContext.SaveChangesAsync();
+            return RedirectToAction("Notes", newNote.Id);
+        }
+
+
+
+        [Authorize]
         public IActionResult Notebooks()
         {
             return View();
         }
-
-
         [Authorize]
-        public void NoteCreation()
+        public async Task<IActionResult> NotebookCreation()  //Создание заметки и перенаправление на список
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var newNote = new Note {UserId = new Guid(userId)};
+            var newNotebook = new Notebook { UserId = new Guid(userId) };
+            await _dbContext.AddAsync(newNotebook);
+            await _dbContext.SaveChangesAsync();
+            return RedirectToAction("Notebooks");
         }
+
+
 
     }
 }
