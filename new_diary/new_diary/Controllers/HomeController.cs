@@ -74,7 +74,7 @@ namespace new_diary.Controllers
 
 
         [Authorize]
-        public IActionResult Notes(string? noteId)
+        public IActionResult Notes()
         {
             var newModel = GetMainModel();
             return View(newModel);

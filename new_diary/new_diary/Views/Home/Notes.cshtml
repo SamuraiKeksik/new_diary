@@ -18,7 +18,7 @@
                 title = note.Title == string.Empty ? "Title" : note.Title;
                 text = note.Text == string.Empty ? "Empty note" : note.Text;
                 
-                <a href="#" class="note-box list-group-item list-group-item-action " aria-current="true">
+                <a href="#" id="@note.Id" class="note-box list-group-item list-group-item-action " aria-current="true">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">@title</h5>
                         <small>3 days ago</small>
@@ -40,7 +40,7 @@
     </div>
 
     <div class="col-8">
-    <textarea >      
+    <textarea id="note-textarea">      
             Some Initial Content was in this textarea
     </textarea>
 
