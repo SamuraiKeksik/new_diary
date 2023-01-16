@@ -33,7 +33,7 @@ let changeActiveNote = function (event) { //функция смены актив
 
 //функция отправки записки на сервер
 let updateNote = function () {
-    console.log("Update");
+    console.log("Update");    
     let noteText = tinymce.activeEditor.getContent();
     let response = fetch(`/MyApi/UpdateNote?noteId=${currentNoteId}`, {
         method: 'PUT',
@@ -43,7 +43,13 @@ let updateNote = function () {
         body: JSON.stringify({id: currentNoteId, text: noteText })
     });
     let result = response.then(response => console.log(response));
-    alert(JSON.stringify(noteTextarea.value));
+
+    //Изменение текста заметки в меню слева
+    let currentNote = document.getElementById(currentNoteId);
+    let currentNoteText = currentNote.querySelector(".note-text");
+    //избавляемся от тегов и устанавливаем текст заметки
+    currentNoteText.textContent = noteText.replace(/(<([^>]+)>)/ig, '');;
+
 }
 
 

@@ -47,3 +47,10 @@ body {
         display: none; /* for Chrome, Safari, and Opera */
     }
 
+
+.note-text{
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
