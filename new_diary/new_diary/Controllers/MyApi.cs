@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using new_diary.Models;
 using System.Text.Json.Serialization;
 using System.Text.Json;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace new_diary.Controllers
 {
@@ -39,6 +40,16 @@ namespace new_diary.Controllers
             //note.Title = ;
             note.Text = putNote.text;
             await _dbContext.SaveChangesAsync();
+            return true;
+        }
+
+        public bool DeleteNote(string noteId)
+        {
+            var note = _dbContext.Notes.FirstOrDefault(x => x.Id == new Guid(noteId));
+            if (note == null)
+                return false;
+            _dbContext.Notes.Remove(note);
+            _dbContext.SaveChanges();
             return true;
         }
     }

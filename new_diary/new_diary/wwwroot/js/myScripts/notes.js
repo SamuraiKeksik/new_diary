@@ -28,28 +28,35 @@ let changeActiveNote = function (event) { //функция смены актив
             tinymce.activeEditor.setContent(json.text);
         });
     currentNoteId = noteId; //Определение текущей записки
+    
 } 
 
 
 //функция отправки записки на сервер
 let updateNote = function () {
     console.log("Update");    
-    let noteText = tinymce.activeEditor.getContent();
-    let response = fetch(`/MyApi/UpdateNote?noteId=${currentNoteId}`, {
+    let noteText = tinymce.activeEditor.getContent(); //Берем текст из редактора
+    let response = fetch(`/MyApi/UpdateNote?noteId=${currentNoteId}`, { //отправляем текст на сервер
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify({id: currentNoteId, text: noteText })
     });
-    let result = response.then(response => console.log(response));
+    response.then(response => {
+        if (response.ok) {
+            //изменение текста сообщения об успехе
+            let currentNoteTitle = document.getElementById(currentNoteId).querySelector("h5").textContent;
+            document.getElementById("successMessageText").innerText = `Note "${currentNoteTitle}" successfully updated!`;
+            activateSuccessMessage();//Вывод сообщения
+        }            
+    });
 
     //Изменение текста заметки в меню слева
     let currentNote = document.getElementById(currentNoteId);
     let currentNoteText = currentNote.querySelector(".note-text");
     //избавляемся от тегов и устанавливаем текст заметки
-    currentNoteText.textContent = noteText.replace(/(<([^>]+)>)/ig, '');;
-
+    currentNoteText.textContent = noteText.replace(/(<([^>]+)>)/ig, ''); 
 }
 
 
@@ -59,9 +66,43 @@ for (let note of notes) {
 let firstNote = document.querySelector(".note-box"); //выбор первой записки
 firstNote.click();
 
+//добавление сообщение в правый верхний угол
+let toastLiveSuccess = document.getElementById('liveToast')
+let activateSuccessMessage = function () {
+    let toast = new bootstrap.Toast(toastLiveSuccess);
+    toast.show();
+};
+
+
+
+deleteBtn.addEventListener("click", function () {
+    //Получение заголовка записки
+    let currentNoteTitle = document.getElementById(currentNoteId).querySelector("h5").textContent;
+    if (confirm(`Are you want to delete "${currentNoteTitle}" note?`)) //Если согласились на удаление записки, то удаляем её
+    { 
+        // Удаление записки
+        let response = fetch(`/MyApi/DeleteNote?noteId=${currentNoteId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8',
+            },
+        });
+        response.then(response => {
+            if (response.ok) {
+                //изменение текста сообщения об успехе                
+                document.getElementById("successMessageText").innerText = `Note "${currentNoteTitle}" successfully deleted!`;
+                activateSuccessMessage();//Вывод сообщения
+            }
+        });          
+    }
+    else {
+        // Если отменили удаление - то ничего не делается
+    }
+});
+
+
 
 updateBtn.addEventListener("click", updateNote);
-
 console.log(notes);
 console.log(deleteBtn, updateBtn);
 

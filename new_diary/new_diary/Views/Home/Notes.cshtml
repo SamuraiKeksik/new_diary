@@ -6,34 +6,35 @@
 }
 
 <div class="row">
-    <div class="list-group col-4">
+    <ul class="list-group col-4 notes-list p-0">
         @if (notes.Count() == 0)
         {
             <text>Empty</text>
         }
         else
         {
-            foreach(var note in notes)
+
+
+            foreach (var note in notes)
             {
-                
+
                 title = note.Title == string.Empty ? "Title" : note.Title;
                 text = note.Text == string.Empty ? "Empty note" : note.Text;
-                
-                <a href="#" id="@note.Id" class="note-box list-group-item list-group-item-action " aria-current="true">
+
+                <li href="#" id="@note.Id" class="note-box list-group-item list-group-item-action " aria-current="true">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">@title</h5>
                         <small>3 days ago</small>
                     </div>
                     <p class="mb-1 note-text">@Regex.Replace(text, "<.*?>", String.Empty)</p>
-                </a>
+                </li>
             }
-           
+
         }
-        <div class="alert alert-dismissible alert-success">
-  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-  <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
-</div>
-        @*<a href="#" class="note-box list-group-item list-group-item-action active" aria-current="true">
+        
+        
+        @*Заметка
+        <a href="#" class="note-box list-group-item list-group-item-action active" aria-current="true">
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">List group item heading</h5>
                 <small>3 days ago</small>
@@ -42,18 +43,28 @@
             <small>And some small print.</small>
         </a>*@
         
+    </ul>
+    
+    @*Сообщение в правый верхний угол*@
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index:2147483648 ">
+        <div id="liveToast" class="toast toast-success text-white bg-success" role="alert" aria-live="assertive" aria-atomic="true">
+            <button type="button" class="btn-close float-end p-2" data-bs-dismiss="toast" aria-label="Close"></button>
+            <div class="toast-body bg-gradient" id="successMessageText">Note successfully updated!</div>
+        </div>
     </div>
 
-    <div class="col-8">
-    <textarea id="note-textarea">      
-            Some Initial Content was in this textarea
-    </textarea>
-
-    <div class="row">
-        <button class="update-btn btn-primary">Update</button>
-        <button class="delete-btn btn-danger">Delete</button>
+    <div class="col-8 p-2">
+        <textarea id="note-textarea">      
+                Some Initial Content was in this textarea
+        </textarea>
+        <div class="row d-flex justify-content-center mt-5">
+            <button class="update-btn btn btn-primary col-4 me-4">Update</button>
+            <button class="delete-btn btn btn-danger col-4">Delete</button>
+        </div>       
     </div>
+
+
     <script src="~/js/myScripts/notes.js"></script>
-        
-    </div>
+    
 </div>
+

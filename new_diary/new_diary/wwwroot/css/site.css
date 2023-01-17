@@ -53,4 +53,12 @@ body {
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    overflow-wrap: break-word;
+}
+
+.notes-list{
+    color:green;
+    height:calc(100vh - 125px);
+    overflow:hidden;
+    overflow-y:scroll;
 }
