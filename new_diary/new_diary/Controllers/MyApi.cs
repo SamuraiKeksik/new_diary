@@ -5,6 +5,8 @@ using new_diary.Models;
 using System.Text.Json.Serialization;
 using System.Text.Json;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using System.Net;
+using System.Web;
 
 namespace new_diary.Controllers
 {
@@ -43,14 +45,17 @@ namespace new_diary.Controllers
             return true;
         }
 
-        public bool DeleteNote(string noteId)
+        public IActionResult DeleteNote(string noteId)
         {
             var note = _dbContext.Notes.FirstOrDefault(x => x.Id == new Guid(noteId));
             if (note == null)
-                return false;
+            {
+                return NotFound(); //404
+            }
             _dbContext.Notes.Remove(note);
             _dbContext.SaveChanges();
-            return true;
+            return Ok(); //200
+            
         }
     }
 }

@@ -24,6 +24,33 @@
 
 </head>
 <body class="sb-nav-fixed">
+
+    @*Сообщение в правый верхний угол об успехе*@    
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index:2147483647 ">
+        <div id="successToast" class="toast toast-success text-white bg-success" role="alert" aria-live="assertive" aria-atomic="true">
+            <button type="button" class="btn-close float-end p-2" data-bs-dismiss="toast" aria-label="Close"></button>
+            <div class="toast-body bg-gradient" id="successMessageText">Note successfully updated!</div>
+        </div>
+    </div>
+    @*Сообщение об ошибке*@
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index:2147483648">
+        <div id="failureToast" class="toast bg-warning" role="alert" aria-live="assertive" aria-atomic="true">
+            <button type="button" class="btn-close float-end p-2" data-bs-dismiss="toast" aria-label="Close"></button>
+            <div class="toast-body bg-gradient" id="failureMessageText" >Hello, world! This is a toast message.</div>
+        </div>
+    </div>
+    @*Окно для создания заметки*@
+    <div class="newNoteModal">
+        <div class="newNoteModal-content">
+            <form>
+                Название заметки:
+                <input name="Title" />
+                <button type="submit">Создать</button>
+            </form>
+        </div>
+    </div>
+    
+
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Ссылка на главную страницу-->
         <a class="navbar-new-diary ps-3 mt-2" asp-action="Main" asp-controller="Home"><img src="~/img/Logo.png" /></a>
@@ -78,6 +105,7 @@
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         
+                        @*Записки*@
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 @foreach (var note in Model.notes)
@@ -87,7 +115,7 @@
                                     @note.Title
                                 </a>
                                 }                                
-                                <a class="nav-link" asp-action="NoteCreation" asp-controller="Home">                                    
+                                <a class="nav-link" id="addNewNoteButton" href="#">                                    
                                     <p class="text-success">
                                         <img src="~/img/icons/add_note.png" class="new-diary-icons" />
                                         Create new note
@@ -158,6 +186,10 @@
             </footer>
         </div>
     </div>
+
+
+    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="~/js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
@@ -165,6 +197,8 @@
     <script src="~/demo/chart-bar-demo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="~/js/datatables-simple-demo.js"></script>
+
+    <script src="~/js/myScripts/Layout.js"></script>
 
     @*Tiny textarea script*@
     <script>

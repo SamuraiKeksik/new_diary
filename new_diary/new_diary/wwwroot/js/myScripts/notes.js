@@ -64,23 +64,15 @@ for (let note of notes) {
     note.addEventListener("click", changeActiveNote); //добавление функции к каждой записке
 }
 let firstNote = document.querySelector(".note-box"); //выбор первой записки
-firstNote.click();
-
-//добавление сообщение в правый верхний угол
-let toastLiveSuccess = document.getElementById('liveToast')
-let activateSuccessMessage = function () {
-    let toast = new bootstrap.Toast(toastLiveSuccess);
-    toast.show();
-};
+firstNote.click();    
 
 
-
-deleteBtn.addEventListener("click", function () {
-    //Получение заголовка записки
-    let currentNoteTitle = document.getElementById(currentNoteId).querySelector("h5").textContent;
+//Кнопка удаления записки
+deleteBtn.addEventListener("click", function () {    
+    let currentNoteTitle = document.getElementById(currentNoteId).querySelector("h5").textContent; //Получение заголовка записки
     if (confirm(`Are you want to delete "${currentNoteTitle}" note?`)) //Если согласились на удаление записки, то удаляем её
     { 
-        // Удаление записки
+        // Запрос на удаление записки
         let response = fetch(`/MyApi/DeleteNote?noteId=${currentNoteId}`, {
             method: 'DELETE',
             headers: {
@@ -91,9 +83,18 @@ deleteBtn.addEventListener("click", function () {
             if (response.ok) {
                 //изменение текста сообщения об успехе                
                 document.getElementById("successMessageText").innerText = `Note "${currentNoteTitle}" successfully deleted!`;
-                activateSuccessMessage();//Вывод сообщения
+                activateSuccessMessage();//Вывод сообщения об успехе - Layout.js
             }
-        });          
+            else {
+                document.getElementById("failureMessageText").innerText = "This note doesn't exist!";
+                activateFailureMessage();//Вывод сообщения об ошибке - Layout.js
+            }
+
+            document.getElementById(currentNoteId).remove(); //удаление записки из меню 
+            let firstNote = document.querySelector(".note-box"); //выбор первой записки
+            firstNote.click(); //нажатие на первую записку
+        });
+        
     }
     else {
         // Если отменили удаление - то ничего не делается

@@ -7,14 +7,24 @@
 
 <div class="row">
     <ul class="list-group col-4 notes-list p-0">
+        <li href="#" id="addNewNote" class=" list-group-item list-group-item-action " aria-current="true">
+            <div class="d-flex w-100 row">  
+                <div class="col-md-2">
+                    <img src="~/img/icons/add_note.png" style="width:50px" />
+                </div> 
+                <div class="col-md-10 addNewNoteText">
+                    <p class="addNewNoteText ">Add new note</p>
+                </div>               
+                
+            </div>
+            
+        </li>
         @if (notes.Count() == 0)
         {
             <text>Empty</text>
         }
         else
         {
-
-
             foreach (var note in notes)
             {
 
@@ -45,13 +55,8 @@
         
     </ul>
     
-    @*Сообщение в правый верхний угол*@
-    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index:2147483648 ">
-        <div id="liveToast" class="toast toast-success text-white bg-success" role="alert" aria-live="assertive" aria-atomic="true">
-            <button type="button" class="btn-close float-end p-2" data-bs-dismiss="toast" aria-label="Close"></button>
-            <div class="toast-body bg-gradient" id="successMessageText">Note successfully updated!</div>
-        </div>
-    </div>
+    
+    
 
     <div class="col-8 p-2">
         <textarea id="note-textarea">      
