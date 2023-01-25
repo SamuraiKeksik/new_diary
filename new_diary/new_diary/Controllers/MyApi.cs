@@ -57,5 +57,15 @@ namespace new_diary.Controllers
             return Ok(); //200
             
         }
+
+        public async Task<IActionResult> CreateNote([FromBody] string jsonString)
+        {            
+            var newNote = new Note() { Title = jsonString };
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            newNote.UserId = new Guid(user.Id);
+            await _dbContext.AddAsync(newNote);
+            await _dbContext.SaveChangesAsync();
+            return Ok();
+        }
     }
 }

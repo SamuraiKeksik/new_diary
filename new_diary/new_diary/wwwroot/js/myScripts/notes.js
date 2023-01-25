@@ -101,7 +101,7 @@ deleteBtn.addEventListener("click", function () {
     }
 });
 
-
+document.getElementById("addNewNoteBox").addEventListener("click", toggleModal); //Открывает модальное окно добавления заметки
 
 updateBtn.addEventListener("click", updateNote);
 console.log(notes);

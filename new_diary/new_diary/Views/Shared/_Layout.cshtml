@@ -18,6 +18,7 @@
     <link href="~/css/styles.css" rel="stylesheet" />
     <link href="~/css/site.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/b403799967.js" crossorigin="anonymous"></script>
+    
 
     @*Tiny textarea editor*@
     <script src="https://cdn.tiny.cloud/1/c3gl9ppgkjc3q6qxwpfikm8177a229yn806h1kiftdkxv52d/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
@@ -42,9 +43,10 @@
     @*Окно для создания заметки*@
     <div class="newNoteModal">
         <div class="newNoteModal-content">
-            <form>
-                Название заметки:
-                <input name="Title" />
+            <button class="close-button">X</button>
+            <form id="createNoteForm">
+                <p>Название заметки:</p>
+                <input id="newNoteTitle" name="Title" type="text"/>
                 <button type="submit">Создать</button>
             </form>
         </div>
@@ -168,7 +170,7 @@
         </div>
         <div id="layoutSidenav_content">
             <main>
-                
+                <script src="~/js/myScripts/Layout.js"></script> @*Скрипты мастер-страницы*@
                     @RenderBody()
                 
             </main>
@@ -198,7 +200,7 @@
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="~/js/datatables-simple-demo.js"></script>
 
-    <script src="~/js/myScripts/Layout.js"></script>
+    
 
     @*Tiny textarea script*@
     <script>

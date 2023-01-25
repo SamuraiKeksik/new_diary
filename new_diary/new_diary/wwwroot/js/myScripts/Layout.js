@@ -13,34 +13,43 @@ let activateFailureMessage = function () {
     toast.show();
 };
 
-/*let addNewNoteFunc = function () { //Функция добавления записки
-    let newPromise = fetch(`/MyApi/AddNewNote?Title=${}`, {
-        method: 'POST',        
-        credentials: "include",
-        });
-}*/
-
 let newNoteButton = document.getElementById("addNewNote");
-//newNoteButton.addEventListener("click", addNewNoteFunc);
-
-
 
 //Модель создания записки
 const modal = document.querySelector(".newNoteModal");
 const closeButton = document.querySelector(".close-button");
 const addButton = document.getElementById("addNewNoteButton");
 
-function toggleModal() {
-    modal.classList.toggle("show-newNoteModal");
+function toggleModal() { 
+    modal.classList.toggle("show-newNoteModal"); //включает и выключает модальное окно
     
 }
 
 function windowOnClick(event) {
     if (event.target === modal) {
-        toggleModal();
+        toggleModal(); //Если нажимаем на фон, то модальное окно закрывается
     }
 }
 
-addButton.addEventListener("click", toggleModal);
+addButton.addEventListener("click", toggleModal); 
 closeButton.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
+
+let createNoteForm = document.getElementById("createNoteForm"); //выбираем форму создания заметки
+    createNoteForm.addEventListener('submit', function (e) {
+    e.preventDefault(); //Предотвращает стандартное поведение
+    const newNoteTitle = document.getElementById("newNoteTitle").value; //Заголовок записки
+    let response = fetch('/MyApi/CreateNote', { //посылает запрос на сервер
+        method: 'POST',
+        credentials: "include",
+        headers: {
+            'Content-Type': 'application/json;charset=UTF-8',
+        },
+        body: JSON.stringify(newNoteTitle),
+        
+    });
+
+        toggleModal();
+        document.getElementById("successMessageText").innerText = `Note "${newNoteTitle}" successfully created!`;
+        activateSuccessMessage();//Вывод сообщения
+})
